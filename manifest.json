@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json.schemastore.org/chrome-manifest",
+    "manifest_version": 3,
+    "name": "Path Filter Logger",
+    "version": "1.0",
+    "description": "Logs network requests with a configurable path filter.",
+    "permissions": ["webRequest", "storage"],
+    "host_permissions": ["https://coopcrmprod.crm4.dynamics.com/*"],
+    "background": {
+        "service_worker": "service-worker.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Path Filter Logger"
+    },
+    "icons": {
+        "16": "icon-16.jpeg",
+        "48": "icon-48.jpeg",
+        "128": "icon-128.jpeg",
+        "256": "icon-256.jpeg"
+    }
+}

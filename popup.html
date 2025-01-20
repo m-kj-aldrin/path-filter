@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Path Filter Logger</title>
+        <script defer src="popup.js"></script>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                margin: 10px;
+                min-width: 512px;
+            }
+            input {
+                width: 100%;
+                padding: 5px;
+                margin-bottom: 10px;
+            }
+            button {
+                padding: 5px 10px;
+                background: #007bff;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            button:hover {
+                background: #0056b3;
+            }
+            .log {
+                background: #f9f9f9;
+                border: 1px solid #ddd;
+                margin: 5px 0;
+                padding: 5px;
+                font-size: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Path Filter Logger</h1>
+        <label for="pathFilter">Path Filter:</label>
+        <input
+            type="text"
+            id="pathFilter"
+            placeholder="Enter path filter (e.g., /api/resource)"
+        />
+        <button id="setFilter">Set Filter</button>
+        <h2>Logs</h2>
+        <div id="logs"></div>
+    </body>
+</html>
