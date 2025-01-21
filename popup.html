@@ -6,21 +6,29 @@
         <title>Path Filter Logger</title>
         <script defer src="popup.js"></script>
         <style>
-            *{
+            * {
                 box-sizing: border-box;
             }
             body {
                 font-family: Arial, sans-serif;
-                margin: 10px;
-                min-width: 512px;
+                margin: 20px;
+                /* Remove min-width since we're in a window now */
             }
-            input {
+            .controls {
+                position: sticky;
+                top: 0;
+                background: white;
+                padding: 10px 0;
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 20px;
+            }
+            input, select {
                 width: 100%;
-                padding: 5px;
+                padding: 8px;
                 margin-bottom: 10px;
             }
             button {
-                padding: 5px 10px;
+                padding: 8px 15px;
                 background: #007bff;
                 color: white;
                 border: none;
@@ -32,22 +40,51 @@
             .log {
                 background: #f9f9f9;
                 border: 1px solid #ddd;
-                margin: 5px 0;
-                padding: 5px;
-                font-size: 12px;
+                margin: 10px 0;
+                padding: 10px;
+                font-size: 13px;
+                white-space: pre-wrap;
+                font-family: monospace;
+            }
+            /* Add visual separation between request and response */
+            .log::after {
+                content: '';
+                display: block;
+                border-bottom: 1px dashed #ccc;
+                margin: 10px 0;
+            }
+            select {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+            }
+            label {
+                display: block;
+                margin-top: 10px;
+                font-weight: bold;
             }
         </style>
     </head>
     <body>
-        <h1>Path Filter Logger</h1>
-        <label for="pathFilter">Path Filter:</label>
-        <input
-            type="text"
-            id="pathFilter"
-            placeholder="Enter path filter (e.g., /api/resource)"
-        />
-        <button id="setFilter">Set Filter</button>
-        <h2>Logs</h2>
+        <div class="controls">
+            <h1>Path Filter Logger</h1>
+            <label for="pathFilter">Path Filter:</label>
+            <input
+                type="text"
+                id="pathFilter"
+                placeholder="Enter path filter (e.g., /api/resource)"
+            />
+            <label for="methodFilter">Method Filter:</label>
+            <select id="methodFilter">
+                <option value="">All Methods</option>
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+                <option value="PUT">PUT</option>
+                <option value="DELETE">DELETE</option>
+                <option value="PATCH">PATCH</option>
+            </select>
+            <button id="setFilter">Set Filters</button>
+        </div>
         <div id="logs"></div>
     </body>
 </html>
